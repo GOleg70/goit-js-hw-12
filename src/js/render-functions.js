@@ -3,8 +3,9 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 const itemUl = document.querySelector(".gallery");
 const loaderWrapper = document.querySelector(".loader-wrapper");
+const btnMore = document.querySelector(".formBtnMore");
 
-const lightbox = new SimpleLightbox('.gallery a', {
+export const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
 });
@@ -26,7 +27,7 @@ export function createGallery(images) {
         `)
         .join("");
 
-    itemUl.innerHTML += galleryMarkup;
+    itemUl.insertAdjacentHTML('beforeend', galleryMarkup);
 
     lightbox.refresh();
 }
@@ -43,4 +44,19 @@ export function hideLoader() {
     loaderWrapper.classList.add("is-hidden");
 }
 
+export function showLoadMoreButton() {                             
+    btnMore.classList.remove("is-hidden-btn");
+}
 
+export function hideLoadMoreButton() {                               
+    btnMore.classList.add("is-hidden-btn");
+}
+
+
+export function scrollPage() {
+    const { height: cardHeight } = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
+    window.scrollBy({
+        top: cardHeight * 2, 
+        behavior: 'smooth'
+    });
+}
