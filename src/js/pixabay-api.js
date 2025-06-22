@@ -14,7 +14,7 @@ export async function getImagesByQuery(query, currentPage = 1) {
             q: query,
             image_type: imageType,
             orientation: orientation,
-            ssafesearch: safesearch,
+            safesearch: safesearch,
             per_page: perPage,
             page: currentPage,
         },

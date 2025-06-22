@@ -23,6 +23,7 @@ btnMore.addEventListener("click", handleClickBtnMore);
 
 async function handleClickBtnMore() {
     currentPage++;
+    hideLoadMoreButton();
     showLoader();
     try {
          
@@ -39,6 +40,8 @@ async function handleClickBtnMore() {
                     message: "We're sorry, but you've reached the end of search results.",
                     position: "topRight"
                 });
+        } else {
+            showLoadMoreButton();
         }
     }
     catch (error) {
@@ -46,7 +49,7 @@ async function handleClickBtnMore() {
             message: "Sorry, there are no images matching your search query. Please try again!",
             position: "topRight"
             });
-        
+            showLoadMoreButton();
         return;
     }
     
